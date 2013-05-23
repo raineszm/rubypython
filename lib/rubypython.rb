@@ -14,9 +14,6 @@
 #   cPickle = RubyPython.import "cPickle"
 #   puts cPickle.dumps("RubyPython is awesome!").rubify
 #   RubyPython.stop
-module RubyPython
-  VERSION = '0.6.3'
-end
 
 require 'rubypython/blankobject'
 require 'rubypython/interpreter'
@@ -27,6 +24,8 @@ require 'rubypython/rubypyproxy'
 require 'rubypython/pymainclass'
 require 'rubypython/pygenerator'
 require 'rubypython/tuple'
+require 'rubypython/version'
+
 require 'thread'
 
 module RubyPython

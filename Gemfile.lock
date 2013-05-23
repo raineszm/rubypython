@@ -1,0 +1,42 @@
+PATH
+  remote: .
+  specs:
+    rubypython (0.6.3)
+      blankslate (>= 2.1.2.3)
+      ffi (>= 1.0.7)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    blankslate (3.1.2)
+    diff-lcs (1.2.4)
+    ffi (1.8.1-java)
+    hoe (3.6.1)
+      rake (>= 0.8, < 11.0)
+    json (1.8.0-java)
+    json_pure (1.8.0)
+    rake (10.0.4)
+    rdoc (4.0.1)
+      json (~> 1.4)
+    rspec (2.13.0)
+      rspec-core (~> 2.13.0)
+      rspec-expectations (~> 2.13.0)
+      rspec-mocks (~> 2.13.0)
+    rspec-core (2.13.1)
+    rspec-expectations (2.13.0)
+      diff-lcs (>= 1.1.3, < 2.0)
+    rspec-mocks (2.13.1)
+    rubyforge (2.0.4)
+      json_pure (>= 1.1.7)
+    tilt (1.4.1)
+
+PLATFORMS
+  java
+
+DEPENDENCIES
+  hoe (~> 3.6)
+  rdoc (~> 4.0)
+  rspec (~> 2.0)
+  rubyforge (>= 2.0.4)
+  rubypython!
+  tilt (~> 1.0)
