@@ -9,6 +9,9 @@ def apply_callback(callback, args):
 def named_args(arg1, arg2):
   return [arg2*2, arg1*2]
 
+def optional_named_args(arg1="abc", arg2="def"):
+  return arg1 + arg2
+
 class RubyPythonMockObject:
   STRING = "STRING"
   STRING_LIST = ["STRING1", "STRING2"]

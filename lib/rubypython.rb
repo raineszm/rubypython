@@ -102,10 +102,22 @@ module RubyPython
     # [mod_name] The name of the module to import.
     def import(mod_name)
       if defined? Python.Py_IsInitialized and Python.Py_IsInitialized != 0
-        pModule = Python.PyImport_ImportModule mod_name
-        raise PythonError.handle_error if PythonError.error?
-        pymod = PyObject.new pModule
-        RubyPyModule.new(pymod)
+        unless mod_name.include? "."
+          pModule = Python.PyImport_ImportModule mod_name
+          raise PythonError.handle_error if PythonError.error?
+          pymod = PyObject.new pModule
+          RubyPyModule.new(pymod)
+        else
+          mods = mod_name.split(".") 
+          # lookup primary module (recursion)
+          mod_ptr = self.import(mods.first)
+          mods.drop(1).each do |mod|
+            # resolve trailing modules
+            mod_ptr = mod_ptr.method_missing(mod)
+          end
+          # return final module
+          mod_ptr
+        end
       else
         raise "Python has not been started."
       end

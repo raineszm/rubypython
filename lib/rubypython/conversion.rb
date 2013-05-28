@@ -288,8 +288,8 @@ module RubyPython::Conversion
       pVal = val.read_pointer
       rKey = ptorObject(pKey)
       rVal = ptorObject(pVal)
-      RubyPython.Py_IncRef pKey if rKey.kind_of? ::FFI::Pointer
-      RubyPython.Py_IncRef pVal if rVal.kind_of? ::FFI::Pointer
+      RubyPython::Python.Py_IncRef pKey if rKey.kind_of? ::FFI::Pointer
+      RubyPython::Python.Py_IncRef pVal if rVal.kind_of? ::FFI::Pointer
       rb_hash[rKey] = rVal
     end
 

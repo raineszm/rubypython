@@ -55,6 +55,8 @@ class RubyPython::Interpreter
     rc, @version    = runpy "import sys; print '%d.%d' % sys.version_info[:2]"
     rc, @sys_prefix = runpy "import sys; print sys.prefix"
 
+    @realname = "#{@python}#{@version}"
+
     if ::FFI::Platform.windows?
       flat_version  = @version.tr('.', '')
       basename      = File.basename(@python, '.exe')
@@ -74,14 +76,13 @@ class RubyPython::Interpreter
         @version_name = "#{basename}#{@version}"
       end
     end
-
     @library = find_python_lib
   end
 
   def find_python_lib
     # By default, the library name will be something like
     # libpython2.6.so, but that won't always work.
-    @libbase = "#{::FFI::Platform::LIBPREFIX}#{@version_name}"
+    @libbase = "#{::FFI::Platform::LIBPREFIX}#{@realname}"
     @libext = ::FFI::Platform::LIBSUFFIX
     @libname = "#{@libbase}.#{@libext}"
 
@@ -154,7 +155,7 @@ class RubyPython::Interpreter
         library = location
         break
       end
-    end
+    end 
 
     library
   end

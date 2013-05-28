@@ -169,6 +169,12 @@ describe RubyPython::RubyPyProxy do
       @objects.named_args!(:arg2 => 2, :arg1 => 1).rubify.should == [4,2]
     end
 
+    it "should pass named args via bang method for optional params" do
+      @objects.optional_named_args!().rubify.should == "abcdef"
+      @objects.optional_named_args!(arg1: 'que', arg2: 'ing').rubify.should == "queing"
+      @objects.optional_named_args!(arg2: 'ing').rubify.should == "abcing"
+    end
+
     it "should pass through keyword arguments via bang method" do
       builtinProxy = described_class.new @builtin
       builtinProxy.dict!({'dict'=>'val'}, :keyword=>true).rubify.should == {
