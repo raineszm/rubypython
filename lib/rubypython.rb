@@ -213,7 +213,8 @@ module RubyPython
     end
 
     def initialized?
-      RubyPython::Python.Py_IsInitialized != 0
+      return RubyPython::Python.Py_IsInitialized != 0 if RubyPython::Python.const_defined?(:Py_IsInitialized)
+      false
     end
 
     # Used to activate the virtualenv.
