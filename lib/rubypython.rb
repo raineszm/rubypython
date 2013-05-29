@@ -212,6 +212,10 @@ module RubyPython
       end
     end
 
+    def initialized?
+      RubyPython::Python.Py_IsInitialized != 0
+    end
+
     # Used to activate the virtualenv.
     def activate_virtualenv
       imp = import("imp")
