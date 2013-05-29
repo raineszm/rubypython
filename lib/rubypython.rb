@@ -15,6 +15,10 @@
 #   puts cPickle.dumps("RubyPython is awesome!").rubify
 #   RubyPython.stop
 
+module RubyPython
+  # module init placeholder
+end
+
 require 'rubypython/blankobject'
 require 'rubypython/interpreter'
 require 'rubypython/python'
