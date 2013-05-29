@@ -127,6 +127,8 @@ start before running the code provided in the block and stop it afterwards.
 
 This format is experimental and may be changed.
 
+NOTE: bang is used because it's difficult to distinguish between passing dicts or named arguments.
+
   # Python
   def foo(arg1, arg2):
     pass
@@ -259,7 +261,7 @@ It should work with other implementations that support the Ruby FFI gem with no
 modification.
 
 === OS Support
-RubyPython has been extensively tested on Mac OS 10.5 and 10.6, and Ubuntu
+RubyPython has been extensively tested on Mac OS 10.5, 10.6, and 10.8 and Ubuntu
 10.10 (64-bit Intel). If your platform has a DLL or shared object version of
 Python and supports the FFI gem, it should work. Feedback on other platforms is
 always welcome.

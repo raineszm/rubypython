@@ -12,6 +12,15 @@ def named_args(arg1, arg2):
 def optional_named_args(arg1="abc", arg2="def"):
   return arg1 + arg2
 
+def str_type_level0(object):
+  return str(type(object))
+
+def str_type_level1(object):
+  return str(type(object[0]))
+
+def str_type_level2(object):
+  return str(type(object[0][0]))
+
 class RubyPythonMockObject:
   STRING = "STRING"
   STRING_LIST = ["STRING1", "STRING2"]
