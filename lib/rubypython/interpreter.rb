@@ -140,6 +140,7 @@ class RubyPython::Interpreter
     @locations.dup.each do |location|
       path = File.dirname(location)
       base = File.basename(location, ".#{@libext}")
+      @locations << File.join(path, "#{base}.so.1")    # Standard Unix
       @locations << File.join(path, "#{base}.so")    # Standard Unix
       @locations << File.join(path, "#{base}.dylib") # Mac OS X
       @locations << File.join(path, "#{base}.dll")   # Windows
