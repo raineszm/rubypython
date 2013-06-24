@@ -38,6 +38,7 @@ class RubyPython::Interpreter
   #   run.
   def initialize(options = {})
     @python_exe = options[:python_exe]
+    @library = options[:library] if options.include? :library
     # Windows: 'C:\\Python27\python.exe'
     # Mac OS X: '/usr/bin/
 
@@ -76,7 +77,7 @@ class RubyPython::Interpreter
         @version_name = "#{basename}#{@version}"
       end
     end
-    @library = find_python_lib
+    @library ||= find_python_lib
   end
 
   def find_python_lib
