@@ -175,6 +175,21 @@ describe RubyPython::RubyPyProxy do
       @objects.optional_named_args!(arg2: 'ing').rubify.should == "abcing"
     end
 
+    it "should pass tuples parameters" do
+      @objects.str_type_level0( RubyPython::Tuple.tuple(['a', 1, 4.1]) ).rubify.should == "<type 'tuple'>"
+      @objects.str_type_level1( [ RubyPython::Tuple.tuple(['a', 1, 4.1]) ] ).rubify.should == "<type 'tuple'>"
+    end
+
+    it "should pass list parameters" do
+      @objects.str_type_level0( ['a', 1, 4.1] ).rubify.should == "<type 'list'>"
+      @objects.str_type_level1( [ ['a', 1, 4.1] ] ).rubify.should == "<type 'list'>"
+    end
+
+    it "should pass dict parameters" do
+      @objects.str_type_level0( {key: 'value'} ).rubify.should == "<type 'dict'>"
+      @objects.str_type_level1( [ {key: 'value'} ] ).rubify.should == "<type 'dict'>"
+    end
+    
     it "should pass through keyword arguments via bang method" do
       builtinProxy = described_class.new @builtin
       builtinProxy.dict!({'dict'=>'val'}, :keyword=>true).rubify.should == {

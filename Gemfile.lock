@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rubypython (0.6.3)
+    rubypython (0.6.4)
       blankslate (>= 2.1.2.3)
       ffi (>= 1.0.7)
 

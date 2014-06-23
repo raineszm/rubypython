@@ -15,6 +15,10 @@
 #   puts cPickle.dumps("RubyPython is awesome!").rubify
 #   RubyPython.stop
 
+module RubyPython
+  # module init placeholder
+end
+
 require 'rubypython/blankobject'
 require 'rubypython/interpreter'
 require 'rubypython/python'
@@ -206,6 +210,11 @@ module RubyPython
       else
         nil
       end
+    end
+
+    def initialized?
+      return RubyPython::Python.Py_IsInitialized != 0 if RubyPython::Python.const_defined?(:Py_IsInitialized)
+      false
     end
 
     # Used to activate the virtualenv.

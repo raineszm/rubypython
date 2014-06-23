@@ -38,6 +38,7 @@ class RubyPython::Interpreter
   #   run.
   def initialize(options = {})
     @python_exe = options[:python_exe]
+    @library = options[:library] if options.include? :library
     # Windows: 'C:\\Python27\python.exe'
     # Mac OS X: '/usr/bin/
 
@@ -76,7 +77,7 @@ class RubyPython::Interpreter
         @version_name = "#{basename}#{@version}"
       end
     end
-    @library = find_python_lib
+    @library ||= find_python_lib
   end
 
   def find_python_lib
@@ -140,6 +141,7 @@ class RubyPython::Interpreter
     @locations.dup.each do |location|
       path = File.dirname(location)
       base = File.basename(location, ".#{@libext}")
+      @locations << File.join(path, "#{base}.so.1")    # Standard Unix
       @locations << File.join(path, "#{base}.so")    # Standard Unix
       @locations << File.join(path, "#{base}.dylib") # Mac OS X
       @locations << File.join(path, "#{base}.dll")   # Windows
